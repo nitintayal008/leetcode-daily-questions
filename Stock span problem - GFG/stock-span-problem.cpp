@@ -21,6 +21,10 @@ class Solution
           while(st.empty()==false && price[st.top()]<=price[i]){
               st.pop();
           }
+          // logic we are using 
+          // first we are calculating oyr answer and then pushing that 
+          // address into stack. we are taking use of that address and 
+          // then pushing.
           int span=(st.empty()?(i+1):(i-st.top()));
           ans.push_back(span);
           st.push(i);
