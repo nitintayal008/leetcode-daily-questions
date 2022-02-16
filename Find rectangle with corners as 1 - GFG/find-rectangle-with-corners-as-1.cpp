@@ -14,7 +14,7 @@ class Solution{
     bool ValidCorner(const vector<vector<int> >& matrix)
     {
         // Your code goes here
-        unordered_map<int,unordered_set<int>>dp;
+        unordered_map<int,unordered_set<int>>mp;
           int m = matrix.size();
           int n = matrix[0].size();
           for(int i =0;i<m;i++)
@@ -25,11 +25,11 @@ class Solution{
                   {    
                       if(matrix[i][j]==1 && matrix[i][j2]==1)
                       {
-                          if(dp.find(j)!=dp.end() && dp[j].find(j2)!=dp[j].end())
+                          if(mp.find(j)!=mp.end() && mp[j].find(j2)!=mp[j].end())
                           {
                               return true;
                           }
-                          else dp[j].insert(j2);
+                          else mp[j].insert(j2);
                       }
                       
                   }
