@@ -36,23 +36,20 @@ int main() {
 }// } Driver Code Ends
 
 
- vector<int> Smallestonleft(int arr[], int n)
+vector<int> Smallestonleft(int arr[], int n)
 {
     // Complete the function
-    set<int, greater<int>> s1;
-    vector<int> vec;
-    vec.push_back(-1);
-    s1.insert(arr[0]);
-    set<int, greater<int> >::iterator itr;
-    for(int i=1;i<n;i++){
-        s1.insert(arr[i]);
-        itr = s1.upper_bound(arr[i]);
-        if(itr == s1.end()){
-            vec.push_back(-1);
+    vector<int>ans;
+    set<int>s;
+    for(int i=0; i<n; i++){
+        auto index=s.lower_bound(arr[i]);
+        if(index == s.begin()){
+            ans.push_back(-1);
+        }else{
+            index--;
+            ans.push_back(*index);
         }
-        else{
-            vec.push_back(*itr);
-        }
+        s.insert(arr[i]);
     }
-    return vec;
+    return ans;
 }
