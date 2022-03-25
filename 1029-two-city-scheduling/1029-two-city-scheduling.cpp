@@ -1,29 +1,30 @@
 class Solution {
 public:
-    static bool comp(const pair<int,pair<int,int>> &p1, const pair<int,pair<int,int>> &p2)
-    {
-        return p1.first < p2.first;
-    }
     
     int twoCitySchedCost(vector<vector<int>>& costs) {
-        int n = costs.size();
-        int res = 0;
+        vector<int> diff;
+        int mincost = 0;
         
-        vector<pair<int,pair<int,int>>> v;
-        
-        for(int i=0;i<n;i++)
+        for(int i = 0; i<costs.size(); ++i)
         {
-            v.push_back({costs[i][0] - costs[i][1],make_pair(costs[i][0], costs[i][1])});
+			
+            mincost += costs[i][0];//we will add cost to send A by all the person
+			
+            diff.push_back(costs[i][1] - costs[i][0]);// we will find out diifenece
+        }
+		
+		
+        sort(diff.begin(),diff.end());
+        
+		// picking n persons having least diff
+		// sending them to city B
+        for(int i=0; i<costs.size()/2; ++i)
+        {
+            mincost += diff[i];//addinf difference to total calculated amount
         }
         
-        sort(v.begin(), v.end(), comp);
+        return  mincost;
         
-        for(int i=0;i<n/2;i++)
-            res += v[i].second.first;
-        
-        for(int i=n/2;i<n;i++)
-            res += v[i].second.second; 
-        
-        return res;
     }
+	
 };
