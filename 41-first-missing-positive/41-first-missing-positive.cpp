@@ -3,7 +3,7 @@ public:
     int firstMissingPositive(vector<int> A)
     {
         int n = A.size();
-        for(int i = 0; i < n; ++ i) {
+        for(int i = 0; i < n;  i++) {
             while(A[i] >= 1 && A[i] <= n && A[i] != A[A[i]-1])
                 swap(A[i], A[A[i] - 1]);
         }
