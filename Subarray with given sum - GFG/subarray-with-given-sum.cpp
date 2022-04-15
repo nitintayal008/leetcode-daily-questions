@@ -15,7 +15,7 @@ class Solution
         int j=0;
         int sum=0;
         vector<int>ans;
-        while( j<=n){
+        while(i<n &&  j<=n){
             if(sum==S){
                 ans.push_back(i+1);
                 ans.push_back(j);
