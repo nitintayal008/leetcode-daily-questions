@@ -18,7 +18,7 @@ public:
         inorder(root->left);
         temp->right=new TreeNode(root->val);
         temp=temp->right;
-        inorder(root->right);
+        return inorder(root->right);
     }
     TreeNode* increasingBST(TreeNode* root){
         inorder(root);
