@@ -12,15 +12,16 @@
 class Solution {
 public:
     TreeNode* trimBST(TreeNode* root, int low, int high) {
-      if(!root)return NULL;
+        //we are given binary search tree so we will use properties of binary 
+        //search tree
+        if(root==NULL) return NULL;
         if(root->val<low){
-            root->left=NULL;
             return trimBST(root->right,low,high);
-        }
-        else if(root->val>high){
-            root->right=NULL;
-            return trimBST(root->left,low,high);
-        }
+        }else 
+            if(root->val>high){
+                return trimBST(root->left,low,high);
+            }
+        
         root->left=trimBST(root->left,low,high);
         root->right=trimBST(root->right,low,high);
         return root;
