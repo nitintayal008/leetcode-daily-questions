@@ -11,26 +11,21 @@
  */
 class Solution {
 public:
-       void solve(TreeNode *root, int &num)
+       void solve(TreeNode *temp, int &num)
     {
-		// Base Condition
-        if(root == NULL)
+        if(temp == NULL)
             return;
-		// Solve for RST first.
-        solve(root->right, num);
-		// Assigning sum of RST to root.
-        root->val = num + root->val;
-		// Maintaining sum of RST.
-        num = root->val;
-		// Once done with RST go to LST.
-        solve(root->left, num);
+        solve(temp->right, num);
+        temp->val = num + temp->val;	
+        num = temp->val;
+        solve(temp->left, num);
     }
     
     TreeNode* convertBST(TreeNode* root) 
     {
-		// keeps sum of RightSubTree of current Node.
         int num = 0;
-        solve(root, num);
+        TreeNode*temp=root;
+        solve(temp, num);
         return root;
     }
 };
