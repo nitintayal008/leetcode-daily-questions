@@ -18,27 +18,24 @@ public:
 
 class Solution {
 public:
-    void levelOrder(Node* root){
-        queue<Node*> q;
+     Node* connect(Node* root) 
+    {
+        if(root==NULL) return NULL;
+        queue<Node *> q;
         q.push(root);
-        int n;
-        Node* temp;
-        while(!q.empty()){
-            n=q.size();
-            while(n--){
-               temp = q.front();  q.pop();
-                 if(!q.empty())temp->next = q.front(); 
-               if(temp->left)q.push(temp->left);
-               if(temp->right)q.push(temp->right);
-                
-              
+        while(q.size()!=0)
+        {
+            int size=q.size();
+            while(size--)
+            {
+                Node *tmp=q.front();
+                q.pop();
+                if(size) tmp->next=q.front();  // point next element present in queue
+                else tmp->next=NULL; // if no element present in queue point to NULL
+                if(tmp->left) q.push(tmp->left);
+                if(tmp->right) q.push(tmp->right);
             }
-            temp->next = NULL;
         }
-    }
-    Node* connect(Node* root) {
-        if(!root)return root;
-        levelOrder(root);
         return root;
     }
 };
