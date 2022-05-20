@@ -1,16 +1,21 @@
 class Solution {
 public:
-    int uniquePaths(int m, int n) {
-       vector<vector<int>>dp(m+1,vector<int>(n+1,-1));
-        return countPaths(m,n,dp);
+    int helper(int m, int n, int row, int col, vector<vector<int>> &dp){
+        if(row >= m or col >= n) return 0;
+        
+        if(row == m - 1 and col == n - 1) return 1;
+        
+        if(dp[row][col] != -1) return dp[row][col];
+        
+        int ans = 0;
+        ans += helper(m, n, row, col + 1, dp);
+        ans += helper(m, n, row + 1, col, dp);
+        
+        return dp[row][col] = ans;
     }
-     int countPaths(int m,int n,vector<vector<int>>&dp){
-        if(m==1 || n==1) return 1;
-       // if(i>=m && j>=n)return 0;
-        
-        if(dp[m][n]!=-1)return dp[m][n];
-            else return dp[m][n]= countPaths(m-1,n,dp) + countPaths(m,n-1,dp);
-            
-        
+    
+    int uniquePaths(int m, int n) {
+        vector<vector<int>> dp(m, vector<int>(n, -1));
+        return helper(m, n, 0, 0, dp);
     }
 };
