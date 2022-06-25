@@ -1,17 +1,13 @@
 class Solution {
 public:
     bool checkPossibility(vector<int>& nums) {
-        int count = 0, tmp = INT_MIN;
-        for(int i = 0; i < nums.size()-1; i++){
-            if(nums[i] <= nums[i+1]){
-                tmp = nums[i];
-            }
-            else{
-                if(nums[i+1] < tmp)nums[i+1] = nums[i];
-                count++;
-                if(count > 1)return false;
+        int n =nums.size(), m = -1;
+        for (int i = 0; i < n - 1; ++i) {
+            if (nums[i] > nums[i + 1]) {
+                if (m != -1) return false;
+                m = i;
             }
         }
-        return true;
+        return m == -1 || m == 0 || m == n - 2 || (nums[m - 1] <= nums[m + 1]) || (nums[m] < nums[m + 2]);
     }
 };
