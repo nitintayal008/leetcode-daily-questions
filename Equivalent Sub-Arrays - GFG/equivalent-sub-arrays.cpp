@@ -19,7 +19,7 @@ public:
         int j=0;
         for(int i=0; i<n; i++){
             mp[arr[i]]++;
-            while(mp.size()==k&&j<=i)
+            while(mp.size()==k)
             {
                 ans+=(n-i);
                 mp[arr[j]]--;
