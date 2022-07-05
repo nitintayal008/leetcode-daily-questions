@@ -22,7 +22,7 @@ g(ee)ksforg(ee)k -&gt; gksforgk</span></pre>
 
 <p><br>
 <span style="font-size:18px"><strong>Your Task:</strong><br>
-You don't need to read input or print anything. Your task is to complete the function <strong>remove()</strong> which takes the string S as input parameter and returns the resultant string.<br>
+You don't need to read input or print anything. Your task is to complete the function <strong>rremove()</strong> which takes the string S as input parameter and returns the resultant string.<br>
 <strong>Note:</strong> For some test cases, the resultant string would be an <strong>empty</strong> string. For that case, the function should return the empty string only.</span></p>
 
 <p><br>
