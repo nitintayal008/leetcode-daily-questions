@@ -17,18 +17,17 @@ class Solution {
         return (j==m);
     }
 public:
-    int numMatchingSubseq(string S, vector<string>& words) {
-        
-        int c = 0;
-        unordered_map<string, int>mp;
-        for (int i = 0; i < words.size(); i++)
+    int numMatchingSubseq(string s, vector<string>& words) {
+        int n=words.size();
+        int count=0;
+        unordered_map<string,int>mp;
+        for(int i=0; i<n; i++){
             mp[words[i]]++;
-            
-        for (auto it = mp.begin(); it != mp.end(); it++) {
-            if (isSub(S, it->first))
-                c += it->second;
         }
-        
-        return c;
+        for (auto it:mp) {
+            if(isSub(s,it.first))
+                count+=it.second;
+        }  
+        return count;
     }
 };
