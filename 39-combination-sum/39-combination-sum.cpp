@@ -1,24 +1,26 @@
 class Solution {
-public:
-    void pick(int start,int total, vector<int>& arr,vector<vector<int>>&ans,vector<int>&temp){
-        if(start==arr.size()){
-        if(total==0){
-          ans.push_back(temp);
-        }
-            return;
-    }
-        if(arr[start]<=total){
-            temp.push_back(arr[start]);
-            pick(start,total-arr[start],arr,ans,temp);
-            temp.pop_back();
-        }
-        pick(start+1,total,arr,ans,temp);
-        
-    }
+public:vector<vector<int>>ans;
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<vector<int>>ans;
+     sort(candidates.begin(),candidates.end());
         vector<int>temp;
-        pick(0,target,candidates,ans,temp);
+        fun(candidates,target,temp,0);
         return ans;
+    }
+    
+    void fun(vector<int>& candidates, int target,vector<int>temp,int i){
+        if(target==0){
+            ans.push_back(temp);
+        }
+        
+        if(i==candidates.size())return;
+       // for(int i=0; i<candidates.size();i++)
+        while(i< candidates.size() && target-candidates[i]>=0){
+           // if(target-candidates[i]>=0){
+                temp.push_back(candidates[i]);
+                fun(candidates,target-candidates[i],temp,i);
+                i++;    
+                temp.pop_back();
+          //  }
+        }
     }
 };
