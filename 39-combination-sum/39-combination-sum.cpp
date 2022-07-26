@@ -12,7 +12,7 @@ public:vector<vector<int>>ans;
             ans.push_back(temp);
         }
         
-        if(i==candidates.size())return;
+       // if(i==candidates.size())return;
        // for(int i=0; i<candidates.size();i++)
         while(i< candidates.size() && target-candidates[i]>=0){
            // if(target-candidates[i]>=0){
