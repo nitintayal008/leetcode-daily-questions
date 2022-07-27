@@ -10,7 +10,7 @@ public:
         if(i<0){
             reverse(nums.begin(),nums.end());
         }else{
-            for( j=nums.size()-1; j>i;j--){
+            for( j=nums.size()-1; j>=0;j--){
                 if(nums[j]>nums[i]){
                     break;
                 }
