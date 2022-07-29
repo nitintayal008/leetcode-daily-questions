@@ -3,7 +3,7 @@ public:
     int firstUniqChar(string s) {
       int n=s.size();
         int res;
-       unordered_map<char, int>temp;
+       int temp[256]={0};
         for(int i=0; i<n; i++){
             temp[s[i]]++;
         }
