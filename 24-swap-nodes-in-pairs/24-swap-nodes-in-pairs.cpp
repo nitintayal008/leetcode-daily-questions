@@ -9,20 +9,28 @@
  * };
  */
 class Solution {
-public:
-    ListNode* swapPairs(ListNode* head) {
-        if(head==NULL)
-            return head;
-        if(head->next==NULL)
-            return head;
-        
-         ListNode *temp = head;        
-
-        while(temp!=NULL && temp->next!=NULL)
-        {
-            swap(temp->val,temp->next->val);
-            temp=temp->next->next;
+public:ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode* cursor = head;
+        for(int i = 0; i < k; i++){
+            if(cursor == nullptr) return head;
+            cursor = cursor->next;
         }
-        return head;
+        ListNode* curr=head;
+        ListNode* prev=NULL;
+        ListNode* next=NULL;
+        int count=0;
+        while(curr!=NULL && count<k){
+            next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+            count++;
+        }
+        
+        head->next=reverseKGroup(next,k);
+        return prev;
+    }
+    ListNode* swapPairs(ListNode* head) {
+        return reverseKGroup(head,2);
     }
 };
