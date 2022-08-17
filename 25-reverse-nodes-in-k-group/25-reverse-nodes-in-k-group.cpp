@@ -28,10 +28,7 @@ public:
             count++;
         }
         
-        if(next!= NULL){
-            ListNode* temp=reverseKGroup(next,k);
-                head->next=temp;
-        }
+        head->next=reverseKGroup(next,k);
         return prev;
     }
 };
