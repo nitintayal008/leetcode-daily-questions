@@ -1,27 +1,29 @@
 class Solution {
-public:vector<string>m;
-    vector<string> letterCombinations(string digits) {
-        vector<string>res;
-        if(digits.size()==0)
-            return res;
-        string s;
-        m={"0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-        dfs(s,digits,0,res);
-           return res;
-    }
-        
-        void dfs(string &s, const string &digits, int pos, vector<string>&res)
-        {
-            if(pos==digits.size())
-            {
-                res.push_back(s);
-                return;
-            }
-            for(auto ch:m[digits[pos]-'0'])
-            {
-                s+=ch;
-                dfs(s,digits,pos+1,res);
-                s.pop_back();
-            }
+public:
+   void solve(string digits,int index,string mapping[],string output,vector<string>&ans){
+        if(index>=digits.size()){
+            ans.push_back(output);
+            return;
         }
+        
+        int number=digits[index]-'0';
+        string value=mapping[number];
+        
+        for(int i=0; i<value.size(); i++){
+            output.push_back(value[i]);
+            solve(digits,index+1,mapping,output,ans);
+            output.pop_back();
+        }
+    }
+    
+    vector<string> letterCombinations(string digits) {
+        vector<string>ans;
+        if(digits.size()==0)return ans;
+        string mapping[10]={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        int index=0;
+        string output="";
+        solve(digits,index,mapping,output,ans);
+
+        return ans;
+    }
 };
