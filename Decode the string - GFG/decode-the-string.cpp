@@ -9,7 +9,7 @@ using namespace std;
 
 class Solution{
 public:
-   string decodedString(string str){
+    string decodedString(string str){
         stack<char> st;
         stack<string> stringStack;
         
