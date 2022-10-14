@@ -13,7 +13,7 @@ public:
             else
             {
                 if(mp.find(rains[i])!=mp.end()){
-                    auto it=s.lower_bound(mp[rains[i]]);
+                    auto it=s.upper_bound(mp[rains[i]]);
                     if(it==s.end())
                       return {};
                     ans[*it]=rains[i];
