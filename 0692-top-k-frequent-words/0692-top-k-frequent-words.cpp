@@ -8,10 +8,6 @@ class Solution {
          return a.second > b.second;
 }
 public:
-    
-    
-   
-    
     vector<string> topKFrequent(vector<string>& words, int k) {
         unordered_map<string,int>mp;
         int n=words.size();
@@ -30,3 +26,20 @@ public:
         return ans;
     }
 };
+// vector<string> topKFrequent(vector<string>& words, int k) {
+//     unordered_map<string,int> mp;
+//     for(string s:words) mp[s]++;
+
+//     vector<pair<int,string>> temp;
+//     vector<string> ans;
+
+//     for(auto it:mp){
+//         temp.push_back({-it.second,it.first});
+//     }
+//     sort(temp.begin(),temp.end());
+
+//     for(int i=0;i<k;i++) ans.push_back(temp[i].second);
+//     return ans;
+// }
+
+//we can also do by inserting negative second value while pushinng to the  pair
