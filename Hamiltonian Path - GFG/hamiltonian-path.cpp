@@ -6,7 +6,7 @@ using namespace std;
 class Solution
 {
     public:
-     bool dfs(int n, vector<int> adj[], vector<int> &vist, int src){
+    bool dfs(int n, vector<int> adj[], vector<int> &vist, int src){
         if(n==0){
             return true;
         }
