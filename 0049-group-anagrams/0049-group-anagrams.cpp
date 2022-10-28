@@ -1,5 +1,8 @@
 class Solution {
 public:
+    
+    //vector with unordered_map is good concept to use in
+    
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         int n= strs.size();
         unordered_map<string,vector<string>>mp;
