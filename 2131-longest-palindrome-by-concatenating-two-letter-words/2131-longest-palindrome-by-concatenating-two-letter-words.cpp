@@ -1,11 +1,11 @@
 class Solution {
 public:
-    // string rev(string str){
-    //     char temp=str[0];
-    //     str[0]=str[1];
-    //     str[1]=temp;
-    //     return str;
-    // }
+    string rev(string &str){
+        char temp=str[0];
+        str[0]=str[1];
+        str[1]=temp;
+        return str;
+    }
     int longestPalindrome(vector<string>& words) {
         unordered_map<string,int>mp;
         int count=0;
@@ -13,7 +13,8 @@ public:
         // int first=0;
         for(int i=0;i<n; i++){
             string p=words[i];
-            reverse(p.begin(),p.end());
+            rev(p);
+            // reverse(p.begin(),p.end());
             if(mp[p]>0){
                 count+=4;
                 mp[p]--;
