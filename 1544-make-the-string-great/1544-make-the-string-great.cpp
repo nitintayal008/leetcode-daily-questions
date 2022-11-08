@@ -5,8 +5,11 @@ public:
         st.push(s[0]);
        for(int i=1;i<s.length();++i) //start comparing from 2nd character if the string
         {
-            if(st.empty()|| (st.top()-s[i] != 32 && s[i]-st.top() != 32)) st.push(s[i]);
-            else st.pop(); 
+            if(st.empty() || abs((st.top()-'a')-(s[i]-'a'))!=32 ){
+                st.push(s[i]);
+            }else{
+                st.pop();
+            }
         }
         string ans="";
         
